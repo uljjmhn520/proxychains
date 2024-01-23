@@ -107,7 +107,9 @@ if ismac ; then
 fi
 
 if islinux ; then
-    echo OS_LDFLAGS=-pthread -ldl -Wl,--no-as-needed>>config.mak
+    # echo OS_LDFLAGS=-pthread -ldl -Wl,--no-as-needed>>config.mak
+    # on debian 11 or ubuntu 20.04.2 ... https://github.com/haad/proxychains/pull/33
+    echo OS_LDFLAGS=-pthread -Wl,--no-as-needed -ldl>>config.mak
     echo LD_SET_SONAME=-Wl,-soname= >>config.mak
 fi
 
